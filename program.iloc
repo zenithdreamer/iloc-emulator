@@ -1,0 +1,7 @@
+loadI 10 => r0
+loadI 5 => r1
+sub r0, r1 => r2
+add r2, r1 => r2
+mult r2, r1 => r2
+div r2, r1 => r2
+
