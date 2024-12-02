@@ -168,12 +168,12 @@ impl VM {
             // Bitwise operations
             "lshift" => {
                 // lshift r1, r2 => r3
-                // Meaning: r1 << c2 => r3
+                // Meaning: r1 << r2 => r3
                 let operands: Vec<&str> = parts[1].split(',').collect();
                 let r1 = self.registers[operands[0]];
-                let c2: i32 = parts[2].parse().unwrap();
+                let r2 = self.registers[operands[1]];
                 let reg = parts.last().unwrap();
-                let result = r1 << c2;
+                let result = r1 << r2;
                 self.registers.insert(reg.to_string(), result);
             }
             "lshiftI" => {
@@ -181,7 +181,7 @@ impl VM {
                 // Meaning: r1 << c2 => r3
                 let operands: Vec<&str> = parts[1].split(',').collect();
                 let r1 = self.registers[operands[0]];
-                let c2: i32 = parts[2].parse().unwrap();
+                let c2: i32 = operands[1].parse().unwrap();
                 let reg = parts.last().unwrap();
                 let result = r1 << c2;
                 self.registers.insert(reg.to_string(), result);
