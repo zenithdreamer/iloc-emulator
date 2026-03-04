@@ -82,7 +82,7 @@ fn l_shift_large_value() {
     let state = binding.get_state();
     let registers = &state.0;
 
-    assert_eq!(registers["r3"], 1024 << 5); 
+    assert_eq!(registers["r3"], 1024 << 5);
 }
 
 #[test]
