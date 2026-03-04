@@ -286,10 +286,10 @@ impl VM {
                 let reg = parts.last().unwrap();
                 if r1 + 3 < self.memory.len() {
                     let bytes = [
-                        self.memory[r1] as u8,
-                        self.memory[r1 + 1] as u8,
-                        self.memory[r1 + 2] as u8,
-                        self.memory[r1 + 3] as u8,
+                        self.memory[r1],
+                        self.memory[r1 + 1],
+                        self.memory[r1 + 2],
+                        self.memory[r1 + 3],
                     ];
                     let value = i32::from_le_bytes(bytes);
                     self.registers.insert(reg.to_string(), value);
@@ -306,10 +306,10 @@ impl VM {
                 let address = r1 + c2 as usize;
                 if address + 3 < self.memory.len() {
                     let bytes = [
-                        self.memory[address] as u8,
-                        self.memory[address + 1] as u8,
-                        self.memory[address + 2] as u8,
-                        self.memory[address + 3] as u8,
+                        self.memory[address],
+                        self.memory[address + 1],
+                        self.memory[address + 2],
+                        self.memory[address + 3],
                     ];
                     let value = i32::from_le_bytes(bytes);
                     self.registers.insert(reg.to_string(), value);
@@ -326,10 +326,10 @@ impl VM {
                 let address = r1 + r2;
                 if address + 3 < self.memory.len() {
                     let bytes = [
-                        self.memory[address] as u8,
-                        self.memory[address + 1] as u8,
-                        self.memory[address + 2] as u8,
-                        self.memory[address + 3] as u8,
+                        self.memory[address],
+                        self.memory[address + 1],
+                        self.memory[address + 2],
+                        self.memory[address + 3],
                     ];
                     let value = i32::from_le_bytes(bytes);
                     self.registers.insert(reg.to_string(), value);
@@ -344,10 +344,10 @@ impl VM {
                 let reg = parts.last().unwrap();
                 if r1 + 3 < self.memory.len() {
                     let bytes = [
-                        self.memory[r1] as u8,
-                        self.memory[r1 + 1] as u8,
-                        self.memory[r1 + 2] as u8,
-                        self.memory[r1 + 3] as u8,
+                        self.memory[r1],
+                        self.memory[r1 + 1],
+                        self.memory[r1 + 2],
+                        self.memory[r1 + 3],
                     ];
                     let value = i32::from_le_bytes(bytes);
                     self.registers.insert(reg.to_string(), value);

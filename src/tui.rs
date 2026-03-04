@@ -22,7 +22,7 @@ pub fn run_tui(vm: Arc<Mutex<VM>>) -> Result<(), io::Error> {
 
     terminal.clear()?;
 
-    Ok(loop {
+    loop {
         terminal.draw(|f| {
             let chunks = Layout::default()
                 .direction(Direction::Horizontal)
@@ -64,7 +64,7 @@ pub fn run_tui(vm: Arc<Mutex<VM>>) -> Result<(), io::Error> {
                 .iter()
                 .map(|(reg, val)| ratatui::prelude::Line::from(format!("{}: {}\n", reg, val)))
                 .collect();
-            reg_text.sort_by(|a, b| a.to_string().cmp(&b.to_string()));
+            reg_text.sort_by_key(|a| a.to_string());
             let registers_panel = Paragraph::new(reg_text)
                 .block(Block::default().borders(Borders::ALL).title("Registers"));
 
@@ -100,8 +100,8 @@ pub fn run_tui(vm: Arc<Mutex<VM>>) -> Result<(), io::Error> {
                             group
                                 .clone()
                                 .map(|&val| {
-                                    if (val as u8).is_ascii_graphic() {
-                                        (val as u8) as char
+                                    if val.is_ascii_graphic() {
+                                        val as char
                                     } else {
                                         '.'
                                     }
@@ -150,5 +150,7 @@ pub fn run_tui(vm: Arc<Mutex<VM>>) -> Result<(), io::Error> {
                 running = false;
             }
         }
-    })
+    }
+
+    Ok(())
 }
